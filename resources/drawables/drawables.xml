@@ -1,0 +1,43 @@
+<drawables xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <bitmap id="LauncherIcon" filename="launcher_icon.svg" dithering="none" />
+    <bitmap
+        id="DestinationIcon" filename="destination_icon.svg" dithering="none" />
+    <bitmap
+        id="DestinationIconDark" filename="destination_icon_dark.svg" dithering="none" />
+    <bitmap
+        id="heartIcon" filename="heart.svg" dithering="none" />
+    <bitmap
+        id="heartUpIcon" filename="heart-up.svg" dithering="none" />
+    <bitmap
+        id="boltIcon" filename="bolt.svg" dithering="none" />
+    <bitmap
+        id="caretUp" filename="caret-up.svg" dithering="none" />
+    <bitmap
+        id="caretDown" filename="caret-down.svg" dithering="none" />
+    <bitmap
+        id="clockIcon" filename="clock.svg" dithering="none" />
+    <bitmap
+        id="clockDarkIcon" filename="clock-dark.svg" dithering="none" />
+    <bitmap
+        id="rulerMeasureIcon" filename="ruler-measure.svg" dithering="none" />
+    <bitmap
+        id="rulerMeasureDarkIcon" filename="ruler-measure-dark.svg" dithering="none" />
+    <bitmap
+        id="speedIcon" filename="speed.svg" dithering="none" />
+    <bitmap
+        id="speedDarkIcon" filename="speed-dark.svg" dithering="none" />
+    <bitmap
+        id="arrowUpIcon" filename="square-arrow-up.svg" dithering="none" />
+    <bitmap
+        id="arrowUpDarkIcon" filename="square-arrow-up-dark.svg" dithering="none" />
+    <bitmap
+        id="arrowDownIcon" filename="square-arrow-down.svg" dithering="none" />
+    <bitmap
+        id="arrowDownDarkIcon" filename="square-arrow-down-dark.svg" dithering="none" />
+    <bitmap
+        id="mapIcon" filename="map-route.svg" dithering="none" />
+    <bitmap
+        id="mapDarkIcon" filename="map-route-dark.svg" dithering="none" />
+
+</drawables>

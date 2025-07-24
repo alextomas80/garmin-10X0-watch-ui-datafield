@@ -1,0 +1,18 @@
+<strings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <string id="AppName">CBR Edge Dash</string>
+
+    <string id="distanceLabel">Distancia (km)</string>
+    <string
+        id="averageText">AVG</string>
+    <string
+        id="speedUnits">Velocidad (km/h)</string>
+    <string id="currentHeartRate">Pulso (bpm)</string>
+    <string id="watts3s">W / 3s</string>
+    <string
+        id="altitudeUnits">Altura (m)</string>
+    <string id="elapsedTime">Tiempo</string>
+    <string
+        id="percentageGradeUnits">Desnivel (%)</string>
+
+</strings>

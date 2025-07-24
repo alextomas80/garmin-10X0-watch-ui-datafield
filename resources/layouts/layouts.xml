@@ -1,0 +1,233 @@
+<layouts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <layout id="MainLayout">
+
+        <drawable class="Background" />
+
+        <label id="speedValue"
+            x="245"
+            y="10"
+            justification="Graphics.TEXT_JUSTIFY_RIGHT"
+            font="Graphics.FONT_NUMBER_THAI_HOT"
+        />
+
+        <!-- Velocidad Media - Lado izquierdo -->
+        <label id="avgSpeedUnits"
+            x="10"
+            y="50"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+            font="Graphics.FONT_TINY"
+        />
+
+        <label id="avgSpeedValue"
+            x="42"
+            y="44"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+            font="Graphics.FONT_GLANCE"
+        />
+
+        <!-- Velocidad Máxima - Lado izquierdo debajo de la media -->
+        <label id="maxSpeedUnits"
+            x="10"
+            y="71"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+            font="Graphics.FONT_TINY"
+        />
+
+        <label id="maxSpeedValue"
+            x="42"
+            y="65"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+            font="Graphics.FONT_GLANCE"
+        />
+
+        <!-- Frecuencia Cardíaca - Lado derecho debajo de la distancia -->
+        <label id="heartRateValue"
+            x="70"
+            y="114"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            font="Graphics.FONT_NUMBER_MEDIUM"
+        />
+        <label id="averageHeartRate"
+            x="70"
+            y="162"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            font="Graphics.FONT_TINY"
+        />
+
+        <!-- Potencia media 3s -->
+        <label id="powerValue"
+            x="210"
+            y="114"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            font="Graphics.FONT_NUMBER_MEDIUM"
+        />
+        <label id="averagePower"
+            x="210"
+            y="162"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            font="Graphics.FONT_TINY"
+        />
+
+        <!-- Distancia -->
+        <label
+            id="distanceValue"
+            x="245"
+            y="228"
+            font="Graphics.FONT_NUMBER_HOT"
+            justification="Graphics.TEXT_JUSTIFY_VCENTER"
+        />
+        <label
+            id="distanceNextPointValue"
+            x="10"
+            y="223"
+            font="Graphics.FONT_TINY"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+        />
+        <label
+            id="nameNextPointValue"
+            x="10"
+            y="241"
+            font="Graphics.FONT_TINY"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+        />
+        <label
+            id="distanceToDestinationValue"
+            x="39"
+            y="250"
+            font="Graphics.FONT_TINY"
+            justification="Graphics.TEXT_JUSTIFY_RIGHT"
+        />
+        <label
+            id="nameToDestinationValue"
+            x="43"
+            y="233"
+            font="Graphics.FONT_TINY"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+        />
+
+        <!-- Tiempo transcurrido -->
+        <label
+            id="elapsedHoursTimeValue"
+            x="96"
+            y="309"
+            font="Graphics.FONT_SYSTEM_NUMBER_MILD"
+            justification="Graphics.TEXT_JUSTIFY_VCENTER"
+        />
+        <label
+            id="elapsedTimeValue"
+            x="245"
+            y="315"
+            font="Graphics.FONT_NUMBER_HOT"
+            justification="Graphics.TEXT_JUSTIFY_VCENTER"
+        />
+
+        <!-- Altitud -->
+        <label id="altitudeValue"
+            x="center"
+            y="378"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            font="Graphics.FONT_NUMBER_MEDIUM"
+        />
+        <label id="altitudeUnits"
+            x="center"
+            y="368"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            font="Graphics.FONT_XTINY"
+        />
+
+        <label id="totalAscentValue"
+            x="40"
+            y="374"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+            font="Graphics.FONT_GLANCE"
+        />
+
+        <label id="totalDescentValue"
+            x="40"
+            y="400"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+            font="Graphics.FONT_GLANCE"
+        />
+
+        <label id="percentageGradeValue"
+            x="230"
+            y="380"
+            justification="Graphics.TEXT_JUSTIFY_RIGHT"
+            font="Graphics.FONT_NUMBER_MEDIUM"
+        />
+        <label id="percentageGradePoint"
+            x="234"
+            y="400"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            font="Graphics.FONT_GLANCE"
+        />
+        <label id="percentageGradeDecimalValue"
+            x="238"
+            y="400"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+            font="Graphics.FONT_GLANCE"
+        />
+        <label id="percentageGradeSign"
+            x="270"
+            y="375"
+            justification="Graphics.TEXT_JUSTIFY_RIGHT"
+            font="Graphics.FONT_GLANCE"
+        />
+        <label id="percentageGradeUnits"
+            x="254"
+            y="398"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+            font="Graphics.FONT_GLANCE"
+        />
+
+        <!-- Footer -->
+        <label id="currentTime"
+            x="10"
+            y="449"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            font="Graphics.FONT_TINY"
+        />
+
+        <label id="battery"
+            x="270"
+            y="449"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+            font="Graphics.FONT_TINY"
+        />
+
+        <label id="temperature"
+            x="270"
+            y="449"
+            justification="Graphics.TEXT_JUSTIFY_RIGHT"
+            font="Graphics.FONT_TINY"
+        />
+
+        <label id="letterC"
+            x="15"
+            y="12"
+            text="C"
+            color="Graphics.COLOR_BLACK"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            font="Graphics.FONT_LARGE"
+        />
+        <label id="letterB"
+            x="32"
+            y="12"
+            text="B"
+            color="Graphics.COLOR_BLACK"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            font="Graphics.FONT_LARGE"
+        />
+        <label id="letterR"
+            x="49"
+            y="12"
+            text="R"
+            color="Graphics.COLOR_BLACK"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            font="Graphics.FONT_LARGE"
+        />
+
+
+    </layout>
+</layouts>
