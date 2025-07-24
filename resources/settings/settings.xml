@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+
+    <setting propertyKey="@Properties.CustomTopText" title="@Strings.CustomTopText"
+        prompt="@Strings.CustomTopTextPrompt">
+        <settingConfig type="alphaNumeric" maxLength="5" />
+    </setting>
+    <setting propertyKey="@Properties.CustomBottomText" title="@Strings.CustomBottomText"
+        prompt="@Strings.CustomBottomTextPrompt">
+        <settingConfig type="alphaNumeric" maxLength="20" />
+    </setting>
+
+</settings>

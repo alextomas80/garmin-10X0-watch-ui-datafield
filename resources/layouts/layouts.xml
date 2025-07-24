@@ -185,14 +185,14 @@
         <label id="currentTime"
             x="10"
             y="449"
-            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
             font="Graphics.FONT_TINY"
         />
 
         <label id="battery"
             x="270"
             y="449"
-            justification="Graphics.TEXT_JUSTIFY_LEFT"
+            justification="Graphics.TEXT_JUSTIFY_RIGHT"
             font="Graphics.FONT_TINY"
         />
 
@@ -203,7 +203,21 @@
             font="Graphics.FONT_TINY"
         />
 
-        <label id="letterC"
+        <!-- Custom User Text -->
+        <label id="customUserTopText"
+            x="10"
+            y="12"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+            font="Graphics.FONT_LARGE"
+        />  
+        <label id="customUserBottomText"
+            x="center"
+            y="449"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            font="Graphics.FONT_SMALL"
+        />
+
+        <!-- <label id="letterC"
             x="15"
             y="12"
             text="C"
@@ -226,7 +240,7 @@
             color="Graphics.COLOR_BLACK"
             justification="Graphics.TEXT_JUSTIFY_CENTER"
             font="Graphics.FONT_LARGE"
-        />
+        /> -->
 
 
     </layout>

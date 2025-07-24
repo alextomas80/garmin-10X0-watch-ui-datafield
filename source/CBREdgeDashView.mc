@@ -1,4 +1,5 @@
 import Toybox.Activity;
+import Toybox.Application;
 import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.WatchUi;
@@ -361,6 +362,22 @@ class CBREdgeDashView extends WatchUi.DataField {
     var batterytext = View.findDrawableById("battery") as Text;
     batterytext.setText(battery.format("%.0f") + "%");
     batterytext.setColor(VALUE_COLOR);
+
+    // Custom bottom text
+    var customBottomText = Application.Properties.getValue("CustomBottomText") as String;
+    if (customBottomText.length() > 0) {
+      var customTextLabel = View.findDrawableById("customUserBottomText") as Text;
+      customTextLabel.setText(customBottomText);
+      customTextLabel.setColor(VALUE_COLOR);
+    }
+
+    // Custom top text
+    var customTopText = Application.Properties.getValue("CustomTopText") as String;
+    if (customTopText.length() > 0) {
+      var customTopTextLabel = View.findDrawableById("customUserTopText") as Text;
+      customTopTextLabel.setText(customTopText);
+      customTopTextLabel.setColor(VALUE_COLOR);
+    }
 
     // var temperaturetext = View.findDrawableById("temperature") as Text;
     // var sensorInfo = Sensor.getInfo();

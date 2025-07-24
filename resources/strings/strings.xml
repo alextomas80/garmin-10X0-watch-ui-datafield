@@ -14,5 +14,12 @@
     <string id="elapsedTime">Tiempo</string>
     <string
         id="percentageGradeUnits">Desnivel (%)</string>
+    
+    <string id="CustomTopText">Texto arriba izquierda</string>
+    <string
+        id="CustomTopTextPrompt">Texto personalizado de arriba izquierda (5 caracteres máximo)</string>
+    <string
+        id="CustomBottomText">Texto personalizado de abajo</string>
+    <string id="CustomBottomTextPrompt">Texto personalizado de abajo (20 caracteres máximo)</string>
 
 </strings>

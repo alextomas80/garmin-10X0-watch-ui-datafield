@@ -1,3 +1,5 @@
 <properties>
     <property id="CurrentSpeedColor" type="number">0xFFFFFF</property>
+    <property id="CustomTopText" type="string">CBR</property>
+    <property id="CustomBottomText" type="string">Grupeta CBR Castellón</property>
 </properties>
