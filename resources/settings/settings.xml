@@ -4,7 +4,7 @@
 
     <setting propertyKey="@Properties.CustomTopText" title="@Strings.CustomTopText"
         prompt="@Strings.CustomTopTextPrompt">
-        <settingConfig type="alphaNumeric" maxLength="5" />
+        <settingConfig type="alphaNumeric" maxLength="7" />
     </setting>
     <setting propertyKey="@Properties.CustomBottomText" title="@Strings.CustomBottomText"
         prompt="@Strings.CustomBottomTextPrompt">

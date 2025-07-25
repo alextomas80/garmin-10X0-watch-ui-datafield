@@ -66,51 +66,58 @@ class CBREdgeDashView extends WatchUi.DataField {
   }
 
   function drawLines(dc as Dc) as Void {
-    dc.setPenWidth(1.5);
-    dc.setColor(VALUE_COLOR, Graphics.COLOR_TRANSPARENT);
-
     var lines = [
-      {
-        :x1 => 0,
-        :y1 => HEIGHT_SCREEN * FIRST_ROW_HEIGHT,
-        :x2 => WIDTH_SCREEN,
-        :y2 => HEIGHT_SCREEN * FIRST_ROW_HEIGHT,
-      },
-      {
-        :x1 => 0,
-        :y1 => HEIGHT_SCREEN * (FIRST_ROW_HEIGHT + BASIC_ROW_HEIGHT),
-        :x2 => WIDTH_SCREEN,
-        :y2 => HEIGHT_SCREEN * (FIRST_ROW_HEIGHT + BASIC_ROW_HEIGHT),
-      },
+      // {
+      //   :x1 => 0,
+      //   :y1 => HEIGHT_SCREEN * FIRST_ROW_HEIGHT,
+      //   :x2 => WIDTH_SCREEN,
+      //   :y2 => HEIGHT_SCREEN * FIRST_ROW_HEIGHT,
+      // },
+      // {
+      //   :x1 => 0,
+      //   :y1 => HEIGHT_SCREEN * (FIRST_ROW_HEIGHT + BASIC_ROW_HEIGHT),
+      //   :x2 => WIDTH_SCREEN,
+      //   :y2 => HEIGHT_SCREEN * (FIRST_ROW_HEIGHT + BASIC_ROW_HEIGHT),
+      // },
       {
         :x1 => 0,
         :y1 => HEIGHT_SCREEN * (FIRST_ROW_HEIGHT + BASIC_ROW_HEIGHT * 2),
         :x2 => WIDTH_SCREEN,
         :y2 => HEIGHT_SCREEN * (FIRST_ROW_HEIGHT + BASIC_ROW_HEIGHT * 2),
+        :color => VALUE_COLOR,
+        :width => 1.5,
       },
       {
         :x1 => 0,
         :y1 => HEIGHT_SCREEN * (FIRST_ROW_HEIGHT + BASIC_ROW_HEIGHT * 3),
         :x2 => WIDTH_SCREEN,
         :y2 => HEIGHT_SCREEN * (FIRST_ROW_HEIGHT + BASIC_ROW_HEIGHT * 3),
+        :color => VALUE_COLOR,
+        :width => 1.5,
       },
       {
         :x1 => 0,
         :y1 => HEIGHT_SCREEN * (FIRST_ROW_HEIGHT + BASIC_ROW_HEIGHT * 4),
         :x2 => WIDTH_SCREEN,
         :y2 => HEIGHT_SCREEN * (FIRST_ROW_HEIGHT + BASIC_ROW_HEIGHT * 4),
+        :color => VALUE_COLOR,
+        :width => 1.5,
       },
       {
         // Vertical line
-        :x1 => CENTER_SCREEN_PX,
+        :x1 => CENTER_SCREEN_PX + 8,
         :y1 => HEIGHT_SCREEN * FIRST_ROW_HEIGHT,
-        :x2 => CENTER_SCREEN_PX,
+        :x2 => CENTER_SCREEN_PX - 8,
         :y2 => HEIGHT_SCREEN * (FIRST_ROW_HEIGHT + BASIC_ROW_HEIGHT),
+        :color => IS_DARK_MODE ? Graphics.COLOR_BLACK : Graphics.COLOR_WHITE,
+        :width => 4,
       },
     ];
 
     for (var i = 0; i < lines.size(); i++) {
       var line = lines[i];
+      dc.setColor(line[:color], Graphics.COLOR_TRANSPARENT);
+      dc.setPenWidth(line[:width]);
       dc.drawLine(line[:x1], line[:y1], line[:x2], line[:y2]);
     }
   }
@@ -158,7 +165,7 @@ class CBREdgeDashView extends WatchUi.DataField {
 
     var hrDisplay = View.findDrawableById("heartRateValue") as Text;
     hrDisplay.setText(currentHR);
-    hrDisplay.setColor(VALUE_COLOR);
+    hrDisplay.setColor(Graphics.COLOR_WHITE);
 
     // Avg
     var avgHR = SensorGetters.getAverageHeartRate(info);
@@ -166,7 +173,7 @@ class CBREdgeDashView extends WatchUi.DataField {
     var avgHrDisplay = View.findDrawableById("averageHeartRate") as Text;
     var averageText = WatchUi.loadResource(Rez.Strings.averageText) as String;
     avgHrDisplay.setText(averageText + " " + avgHR);
-    avgHrDisplay.setColor(UNITS_COLOR);
+    avgHrDisplay.setColor(Graphics.COLOR_WHITE);
   }
 
   function drawPower() as Void {
@@ -177,7 +184,7 @@ class CBREdgeDashView extends WatchUi.DataField {
 
     var powerDisplay = View.findDrawableById("powerValue") as Text;
     powerDisplay.setText(currentPowerValue);
-    powerDisplay.setColor(VALUE_COLOR);
+    powerDisplay.setColor(Graphics.COLOR_WHITE);
 
     // Avg
     var averagePowerValue = SensorGetters.getAveragePower(info);
@@ -185,7 +192,7 @@ class CBREdgeDashView extends WatchUi.DataField {
     var avgPowerDisplay = View.findDrawableById("averagePower") as Text;
     var averageText = WatchUi.loadResource(Rez.Strings.averageText) as String;
     avgPowerDisplay.setText(averageText + " " + averagePowerValue);
-    avgPowerDisplay.setColor(UNITS_COLOR);
+    avgPowerDisplay.setColor(Graphics.COLOR_WHITE);
   }
 
   function drawInfoRoute() as Void {
@@ -193,16 +200,11 @@ class CBREdgeDashView extends WatchUi.DataField {
 
     var infoRoute = SensorGetters.getInformationRoute(info);
     var valueNextPoint = infoRoute[:valueNextPoint];
-    var elevationNextPoint = infoRoute[:elevationNextPoint];
     var distanceToNextPointDisplay = View.findDrawableById("distanceNextPointValue") as Text;
 
     if (valueNextPoint != null && valueNextPoint != 0.0f) {
       var distanceToNextPoint = valueNextPoint.format("%.2f");
-      if (elevationNextPoint != null && elevationNextPoint > 0.0f) {
-        distanceToNextPointDisplay.setText(distanceToNextPoint + " km · " + elevationNextPoint.format("%.0f") + "+");
-      } else {
-        distanceToNextPointDisplay.setText(distanceToNextPoint + " km");
-      }
+      distanceToNextPointDisplay.setText(distanceToNextPoint + " km");
       distanceToNextPointDisplay.setColor(VALUE_COLOR);
     }
 
@@ -210,7 +212,7 @@ class CBREdgeDashView extends WatchUi.DataField {
     var nameNextPoint = infoRoute[:nameNextPoint];
 
     if (nameNextPoint != null && nameNextPoint != "--") {
-      var displayName = nameNextPoint.length() > 16 ? nameNextPoint.substring(0, 16) + "..." : nameNextPoint;
+      var displayName = nameNextPoint.length() > 13 ? nameNextPoint.substring(0, 13) + "..." : nameNextPoint;
       nameOfNextPointDisplay.setText(displayName);
       nameOfNextPointDisplay.setColor(UNITS_COLOR);
     }
@@ -439,7 +441,7 @@ class CBREdgeDashView extends WatchUi.DataField {
 
     // Solo dibujar el icono del mapa si hay información de navegación
     if (valueNextPoint != null && valueNextPoint != 0.0f) {
-      var mapIcon = IS_DARK_MODE ? Rez.Drawables.mapDarkIcon : Rez.Drawables.mapIcon;
+      var mapIcon = IS_DARK_MODE ? Rez.Drawables.arrowBigRightLinesDarkIcon : Rez.Drawables.arrowBigRightLinesIcon;
       drawIcon(dc, mapIcon, 10, 195);
     }
   }

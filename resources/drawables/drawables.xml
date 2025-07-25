@@ -39,5 +39,10 @@
         id="mapIcon" filename="map-route.svg" dithering="none" />
     <bitmap
         id="mapDarkIcon" filename="map-route-dark.svg" dithering="none" />
+    <bitmap
+        id="arrowBigRightLinesIcon" filename="arrow-big-right-lines.svg" dithering="none" />
+    <bitmap
+        id="arrowBigRightLinesDarkIcon" filename="arrow-big-right-lines-dark.svg" dithering="none" />
+
 
 </drawables>
