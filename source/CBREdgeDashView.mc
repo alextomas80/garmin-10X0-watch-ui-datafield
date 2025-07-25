@@ -9,6 +9,7 @@ using SensorsGetters.Getters as SensorGetters;
 using DistanceGetters.Getters as DistanceUtils;
 using AltitudeGetters.Getters as AltitudeUtils;
 using TimeGetters.Getters as TimeUtils;
+using HrGetters;
 
 class CBREdgeDashView extends WatchUi.DataField {
   hidden var averageSpeedValue as Numeric = 0.0f;
@@ -68,18 +69,6 @@ class CBREdgeDashView extends WatchUi.DataField {
 
   function drawLines(dc as Dc) as Void {
     var lines = [
-      // {
-      //   :x1 => 0,
-      //   :y1 => HEIGHT_SCREEN * FIRST_ROW_HEIGHT,
-      //   :x2 => WIDTH_SCREEN,
-      //   :y2 => HEIGHT_SCREEN * FIRST_ROW_HEIGHT,
-      // },
-      // {
-      //   :x1 => 0,
-      //   :y1 => HEIGHT_SCREEN * (FIRST_ROW_HEIGHT + BASIC_ROW_HEIGHT),
-      //   :x2 => WIDTH_SCREEN,
-      //   :y2 => HEIGHT_SCREEN * (FIRST_ROW_HEIGHT + BASIC_ROW_HEIGHT),
-      // },
       {
         :x1 => 0,
         :y1 => HEIGHT_SCREEN * (FIRST_ROW_HEIGHT + BASIC_ROW_HEIGHT * 2),
@@ -162,14 +151,14 @@ class CBREdgeDashView extends WatchUi.DataField {
     var info = Activity.getActivityInfo();
 
     // Current
-    var currentHR = SensorGetters.getCurrentHeartRate(info);
+    var currentHR = HrGetters.getCurrentHeartRate(info);
 
     var hrDisplay = View.findDrawableById("heartRateValue") as Text;
     hrDisplay.setText(currentHR);
     hrDisplay.setColor(Graphics.COLOR_WHITE);
 
     // Avg
-    var avgHR = SensorGetters.getAverageHeartRate(info);
+    var avgHR = HrGetters.getAverageHeartRate(info);
 
     var avgHrDisplay = View.findDrawableById("averageHeartRate") as Text;
     var averageText = WatchUi.loadResource(Rez.Strings.averageText) as String;
@@ -177,7 +166,7 @@ class CBREdgeDashView extends WatchUi.DataField {
     avgHrDisplay.setColor(Graphics.COLOR_WHITE);
 
     // Current Zone
-    var currentZone = SensorGetters.getCurrentHeartRateZone(info);
+    var currentZone = HrGetters.getCurrentHeartRateZone(info);
     var zoneDisplay = View.findDrawableById("zoneHeartRate") as Text;
     zoneDisplay.setColor(Graphics.COLOR_WHITE);
     if (currentZone != null) {
