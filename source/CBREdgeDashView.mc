@@ -3,6 +3,7 @@ import Toybox.Application;
 import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.WatchUi;
+import Toybox.System;
 
 using SensorsGetters.Getters as SensorGetters;
 using DistanceGetters.Getters as DistanceUtils;
@@ -174,6 +175,16 @@ class CBREdgeDashView extends WatchUi.DataField {
     var averageText = WatchUi.loadResource(Rez.Strings.averageText) as String;
     avgHrDisplay.setText(averageText + " " + avgHR);
     avgHrDisplay.setColor(Graphics.COLOR_WHITE);
+
+    // Current Zone
+    var currentZone = SensorGetters.getCurrentHeartRateZone(info);
+    var zoneDisplay = View.findDrawableById("zoneHeartRate") as Text;
+    zoneDisplay.setColor(Graphics.COLOR_WHITE);
+    if (currentZone != null) {
+      zoneDisplay.setText(currentZone.toString());
+    } else {
+      zoneDisplay.setText("-");
+    }
   }
 
   function drawPower() as Void {
@@ -398,13 +409,13 @@ class CBREdgeDashView extends WatchUi.DataField {
     var baseIcons = [
       {
         :resource => Rez.Drawables.heartIcon,
-        :x => WIDTH_SCREEN / 2 - 30,
-        :y => 107,
+        :x => WIDTH_SCREEN / 2 - 38,
+        :y => 123,
       },
       {
         :resource => Rez.Drawables.boltIcon,
-        :x => WIDTH_SCREEN - 32,
-        :y => 107,
+        :x => WIDTH_SCREEN - 38,
+        :y => 123,
       },
       {
         :resource => IS_DARK_MODE ? Rez.Drawables.clockDarkIcon : Rez.Drawables.clockIcon,

@@ -43,28 +43,41 @@
 
         <!-- Frecuencia Cardíaca - Lado derecho debajo de la distancia -->
         <label id="heartRateValue"
-            x="70"
-            y="114"
+            x="58"
+            y="110"
             justification="Graphics.TEXT_JUSTIFY_CENTER"
             font="Graphics.FONT_NUMBER_MEDIUM"
         />
         <label id="averageHeartRate"
-            x="70"
-            y="162"
+            x="58"
+            y="158"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            font="Graphics.FONT_TINY"
+        />
+        <label id="zoneHeartRateLetter"
+            x="109"
+            y="161"
+            text="Z"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            font="Graphics.FONT_XTINY"
+        />
+        <label id="zoneHeartRate"
+            x="118"
+            y="158"
             justification="Graphics.TEXT_JUSTIFY_CENTER"
             font="Graphics.FONT_TINY"
         />
 
         <!-- Potencia media 3s -->
         <label id="powerValue"
-            x="210"
-            y="114"
+            x="198"
+            y="110"
             justification="Graphics.TEXT_JUSTIFY_CENTER"
             font="Graphics.FONT_NUMBER_MEDIUM"
         />
         <label id="averagePower"
-            x="210"
-            y="162"
+            x="198"
+            y="158"
             justification="Graphics.TEXT_JUSTIFY_CENTER"
             font="Graphics.FONT_TINY"
         />
@@ -216,31 +229,6 @@
             justification="Graphics.TEXT_JUSTIFY_CENTER"
             font="Graphics.FONT_SMALL"
         />
-
-        <!-- <label id="letterC"
-            x="15"
-            y="12"
-            text="C"
-            color="Graphics.COLOR_BLACK"
-            justification="Graphics.TEXT_JUSTIFY_CENTER"
-            font="Graphics.FONT_LARGE"
-        />
-        <label id="letterB"
-            x="32"
-            y="12"
-            text="B"
-            color="Graphics.COLOR_BLACK"
-            justification="Graphics.TEXT_JUSTIFY_CENTER"
-            font="Graphics.FONT_LARGE"
-        />
-        <label id="letterR"
-            x="49"
-            y="12"
-            text="R"
-            color="Graphics.COLOR_BLACK"
-            justification="Graphics.TEXT_JUSTIFY_CENTER"
-            font="Graphics.FONT_LARGE"
-        /> -->
 
 
     </layout>

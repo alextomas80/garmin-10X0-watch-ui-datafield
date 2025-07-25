@@ -32,7 +32,7 @@ class Background extends WatchUi.Drawable {
     dc.setColor(isDarkMode ? Graphics.COLOR_BLACK : Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
     dc.fillRectangle(0, 0, deviceWidth, deviceHeight);
 
-    dc.setColor(isDarkMode ? Graphics.COLOR_DK_GRAY : Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+    dc.setColor(isDarkMode ? Graphics.COLOR_DK_GRAY : Graphics.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
     dc.fillRectangle(0, deviceHeight * 0.21, deviceWidth, deviceHeight * 0.182 + 1);
   }
 }
