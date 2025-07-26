@@ -395,6 +395,9 @@ class CBREdgeDashView extends WatchUi.DataField {
     var infoRoute = SensorGetters.getInformationRoute(info);
     var valueNextPoint = infoRoute[:valueNextPoint];
 
+    var screenWidth = dc.getWidth();
+    var screenHeight = dc.getHeight();
+
     var baseIcons = [
       {
         :resource => Rez.Drawables.heartIcon,
@@ -433,6 +436,46 @@ class CBREdgeDashView extends WatchUi.DataField {
       },
     ];
 
+    if (screenWidth == 246 && screenHeight == 322) {
+      baseIcons = [
+        {
+          :resource => Rez.Drawables.heartIcon,
+          :x => WIDTH_SCREEN / 2 - 38,
+          :y => 80,
+        },
+        {
+          :resource => Rez.Drawables.boltIcon,
+          :x => WIDTH_SCREEN - 33,
+          :y => 80,
+        },
+        {
+          :resource => IS_DARK_MODE ? Rez.Drawables.clockDarkIcon : Rez.Drawables.clockIcon,
+          :x => WIDTH_SCREEN - 32,
+          :y => 210,
+        },
+        {
+          :resource => IS_DARK_MODE ? Rez.Drawables.rulerMeasureDarkIcon : Rez.Drawables.rulerMeasureIcon,
+          :x => WIDTH_SCREEN - 32,
+          :y => 151,
+        },
+        {
+          :resource => IS_DARK_MODE ? Rez.Drawables.speedDarkIcon : Rez.Drawables.speedIcon,
+          :x => WIDTH_SCREEN - 32,
+          :y => 36,
+        },
+        {
+          :resource => IS_DARK_MODE ? Rez.Drawables.arrowUpDarkIcon : Rez.Drawables.arrowUpIcon,
+          :x => 8,
+          :y => 251,
+        },
+        {
+          :resource => IS_DARK_MODE ? Rez.Drawables.arrowDownDarkIcon : Rez.Drawables.arrowDownIcon,
+          :x => 8,
+          :y => 273,
+        },
+      ];
+    }
+
     // Dibujar iconos base
     for (var i = 0; i < baseIcons.size(); i++) {
       var icon = baseIcons[i];
@@ -442,7 +485,7 @@ class CBREdgeDashView extends WatchUi.DataField {
     // Solo dibujar el icono del mapa si hay información de navegación
     if (valueNextPoint != null && valueNextPoint != 0.0f) {
       var mapIcon = IS_DARK_MODE ? Rez.Drawables.arrowBigRightLinesDarkIcon : Rez.Drawables.arrowBigRightLinesIcon;
-      drawIcon(dc, mapIcon, 10, 195);
+      drawIcon(dc, mapIcon, 8, 128);
     }
   }
 

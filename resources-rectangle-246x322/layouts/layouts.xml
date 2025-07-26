@@ -1,0 +1,229 @@
+<layouts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <layout id="MainLayout">
+
+        <drawable class="Background" />
+
+        <label id="speedValue"
+            x="209"
+            y="4"
+            justification="Graphics.TEXT_JUSTIFY_RIGHT"
+            font="Graphics.FONT_NUMBER_THAI_HOT"
+        />
+
+        <!-- Velocidad Media - Lado izquierdo -->
+        <label id="avgSpeedUnits"
+            x="10"
+            y="33"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+            font="Graphics.FONT_TINY"
+        />
+
+        <label id="avgSpeedValue"
+            x="37"
+            y="28"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+            font="Graphics.FONT_GLANCE"
+        />
+
+        <!-- Velocidad Máxima - Lado izquierdo debajo de la media -->
+        <label id="maxSpeedUnits"
+            x="10"
+            y="50"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+            font="Graphics.FONT_TINY"
+        />
+
+        <label id="maxSpeedValue"
+            x="37"
+            y="45"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+            font="Graphics.FONT_GLANCE"
+        />
+
+        <!-- Frecuencia Cardíaca - Lado derecho debajo de la distancia -->
+        <label id="heartRateValue"
+            x="52"
+            y="69"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            font="Graphics.FONT_NUMBER_MEDIUM"
+        />
+        <label id="averageHeartRate"
+            x="53"
+            y="108"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            font="Graphics.FONT_TINY"
+        />
+        <label id="zoneHeartRateLetter"
+            x="93"
+            y="110"
+            text="Z"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            font="Graphics.FONT_XTINY"
+        />
+        <label id="zoneHeartRate"
+            x="101"
+            y="108"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            font="Graphics.FONT_TINY"
+        />
+
+        <!-- Potencia media 3s -->
+        <label id="powerValue"
+            x="182"
+            y="69"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            font="Graphics.FONT_NUMBER_MEDIUM"
+        />
+        <label id="averagePower"
+            x="182"
+            y="108"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            font="Graphics.FONT_TINY"
+        />
+
+        <!-- Distancia -->
+        <label
+            id="distanceValue"
+            x="209"
+            y="157"
+            font="Graphics.FONT_NUMBER_HOT"
+            justification="Graphics.TEXT_JUSTIFY_VCENTER"
+        />
+        <label
+            id="distanceNextPointValue"
+            x="8"
+            y="154"
+            font="Graphics.FONT_TINY"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+        />
+        <label
+            id="nameNextPointValue"
+            x="8"
+            y="167"
+            font="Graphics.FONT_TINY"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+        />
+        <!-- <label
+            id="distanceToDestinationValue"
+            x="39"
+            y="140"
+            font="Graphics.FONT_TINY"
+            justification="Graphics.TEXT_JUSTIFY_RIGHT"
+        />
+        <label
+            id="nameToDestinationValue"
+            x="43"
+            y="170"
+            font="Graphics.FONT_TINY"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+        /> -->
+
+        <!-- Tiempo transcurrido -->
+        <label
+            id="elapsedHoursTimeValue"
+            x="80"
+            y="209"
+            font="Graphics.FONT_SYSTEM_NUMBER_MILD"
+            justification="Graphics.TEXT_JUSTIFY_VCENTER"
+        />
+        <label
+            id="elapsedTimeValue"
+            x="209"
+            y="216"
+            font="Graphics.FONT_NUMBER_HOT"
+            justification="Graphics.TEXT_JUSTIFY_VCENTER"
+        />
+
+        <!-- Altitud -->
+        <label id="altitudeValue"
+            x="center"
+            y="258"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            font="Graphics.FONT_NUMBER_MEDIUM"
+        />
+        <label id="altitudeUnits"
+            x="center"
+            y="251"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            font="Graphics.FONT_XTINY"
+        />
+
+        <label id="totalAscentValue"
+            x="35"
+            y="254"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+            font="Graphics.FONT_GLANCE"
+        />
+
+        <label id="totalDescentValue"
+            x="35"
+            y="276"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+            font="Graphics.FONT_GLANCE"
+        />
+
+        <label id="percentageGradeValue"
+            x="210"
+            y="255"
+            justification="Graphics.TEXT_JUSTIFY_RIGHT"
+            font="Graphics.FONT_NUMBER_MEDIUM"
+        />
+        <label id="percentageGradePoint"
+            x="214"
+            y="271"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            font="Graphics.FONT_GLANCE"
+        />
+        <label id="percentageGradeDecimalValue"
+            x="219"
+            y="271"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+            font="Graphics.FONT_GLANCE"
+        />
+        <label id="percentageGradeUnits"
+            x="230"
+            y="271"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+            font="Graphics.FONT_GLANCE"
+        />
+
+        <!-- Footer -->
+        <label id="currentTime"
+            x="10"
+            y="308"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+            font="Graphics.FONT_TINY"
+        />
+
+        <label id="battery"
+            x="236"
+            y="308"
+            justification="Graphics.TEXT_JUSTIFY_RIGHT"
+            font="Graphics.FONT_TINY"
+        />
+
+        <label id="temperature"
+            x="270"
+            y="308"
+            justification="Graphics.TEXT_JUSTIFY_RIGHT"
+            font="Graphics.FONT_TINY"
+        />
+
+        <!-- Custom User Text -->
+        <label id="customUserTopText"
+            x="10"
+            y="10"
+            justification="Graphics.TEXT_JUSTIFY_LEFT"
+            font="Graphics.FONT_MEDIUM"
+        />  
+        <label id="customUserBottomText"
+            x="center"
+            y="307"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            font="Graphics.FONT_SMALL"
+        />
+
+
+    </layout>
+</layouts>
