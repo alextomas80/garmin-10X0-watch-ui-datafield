@@ -231,7 +231,7 @@ module SensorsGetters {
       var currentPower = getCurrentPower(info);
 
       if (currentPower <= 0) {
-        return "--";
+        return "---";
       }
 
       // Intentar obtener potencia promedio si está disponible como referencia
@@ -256,7 +256,7 @@ module SensorsGetters {
       if (info has :averagePower && info.averagePower != null) {
         return info.averagePower.toFloat().format("%.0f");
       } else {
-        return "--";
+        return "---";
       }
     }
   }

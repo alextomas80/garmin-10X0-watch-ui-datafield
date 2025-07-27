@@ -161,8 +161,8 @@ class CBREdgeDashView extends WatchUi.DataField {
     var avgHR = HrGetters.getAverageHeartRate(info);
 
     var avgHrDisplay = View.findDrawableById("averageHeartRate") as Text;
-    var averageText = WatchUi.loadResource(Rez.Strings.averageText) as String;
-    avgHrDisplay.setText(averageText + " " + avgHR);
+    // var averageText = WatchUi.loadResource(Rez.Strings.averageText) as String;
+    avgHrDisplay.setText(avgHR);
     avgHrDisplay.setColor(Graphics.COLOR_WHITE);
 
     // Current Zone
@@ -174,6 +174,23 @@ class CBREdgeDashView extends WatchUi.DataField {
     } else {
       zoneDisplay.setText("-");
     }
+
+    // Icon
+    var posHrX = hrDisplay.locX,
+      posHrY = hrDisplay.locY,
+      widthHr = hrDisplay.width;
+
+    var hrIcon = View.findDrawableById("heartIcon") as WatchUi.Bitmap;
+    hrIcon.setLocation(posHrX + widthHr - 5, posHrY + 5);
+
+    // IconAvg
+    var positionXAvg = avgHrDisplay.locX,
+      positionYAvg = avgHrDisplay.locY,
+      widthHrAvg = avgHrDisplay.width,
+      heightHrAvg = avgHrDisplay.height;
+
+    var iconAvg2 = View.findDrawableById("circleOffIcon2") as WatchUi.Bitmap;
+    iconAvg2.setLocation(positionXAvg - widthHrAvg - 30, positionYAvg - heightHrAvg / 2 + 5);
   }
 
   function drawPower() as Void {
@@ -190,9 +207,26 @@ class CBREdgeDashView extends WatchUi.DataField {
     var averagePowerValue = SensorGetters.getAveragePower(info);
 
     var avgPowerDisplay = View.findDrawableById("averagePower") as Text;
-    var averageText = WatchUi.loadResource(Rez.Strings.averageText) as String;
-    avgPowerDisplay.setText(averageText + " " + averagePowerValue);
+    // var averageText = WatchUi.loadResource(Rez.Strings.averageText) as String;
+    avgPowerDisplay.setText(averagePowerValue);
     avgPowerDisplay.setColor(Graphics.COLOR_WHITE);
+
+    // Icon
+    var positionX = powerDisplay.locX,
+      positionY = powerDisplay.locY,
+      widthHr = powerDisplay.width;
+
+    var icon = View.findDrawableById("boltIcon") as WatchUi.Bitmap;
+    icon.setLocation(positionX + widthHr - 5, positionY + 5);
+
+    // IconAvg
+    var positionXAvg = avgPowerDisplay.locX,
+      positionYAvg = avgPowerDisplay.locY,
+      widthHrAvg = avgPowerDisplay.width,
+      heightHrAvg = avgPowerDisplay.height;
+
+    var iconAvg = View.findDrawableById("circleOffIcon1") as WatchUi.Bitmap;
+    iconAvg.setLocation(positionXAvg - widthHrAvg - 30, positionYAvg - heightHrAvg / 2 + 5);
   }
 
   function drawInfoRoute() as Void {
@@ -242,6 +276,13 @@ class CBREdgeDashView extends WatchUi.DataField {
     var distanceLabel = View.findDrawableById("distanceValue") as Text;
     distanceLabel.setText(elapsedDistanceValue);
     distanceLabel.setColor(VALUE_COLOR);
+
+    // Icon Distante
+    var positionX = distanceLabel.locX,
+      positionY = distanceLabel.locY;
+
+    var icon = View.findDrawableById("rulerMeasureIcon") as WatchUi.Bitmap;
+    icon.setLocation(positionX + 4, positionY - 2);
   }
 
   function drawElapsedTime() as Void {
@@ -399,26 +440,26 @@ class CBREdgeDashView extends WatchUi.DataField {
     var screenHeight = dc.getHeight();
 
     var baseIcons = [
-      {
-        :resource => Rez.Drawables.heartIcon,
-        :x => WIDTH_SCREEN / 2 - 38,
-        :y => 123,
-      },
-      {
-        :resource => Rez.Drawables.boltIcon,
-        :x => WIDTH_SCREEN - 38,
-        :y => 123,
-      },
+      // {
+      //   :resource => Rez.Drawables.heartIcon,
+      //   :x => WIDTH_SCREEN / 2 - 38,
+      //   :y => 123,
+      // },
+      // {
+      //   :resource => Rez.Drawables.boltIcon,
+      //   :x => WIDTH_SCREEN - 38,
+      //   :y => 123,
+      // },
       {
         :resource => IS_DARK_MODE ? Rez.Drawables.clockDarkIcon : Rez.Drawables.clockIcon,
         :x => WIDTH_SCREEN - 32,
         :y => 313,
       },
-      {
-        :resource => IS_DARK_MODE ? Rez.Drawables.rulerMeasureDarkIcon : Rez.Drawables.rulerMeasureIcon,
-        :x => WIDTH_SCREEN - 32,
-        :y => 226,
-      },
+      // {
+      //   :resource => IS_DARK_MODE ? Rez.Drawables.rulerMeasureDarkIcon : Rez.Drawables.rulerMeasureIcon,
+      //   :x => WIDTH_SCREEN - 32,
+      //   :y => 226,
+      // },
       {
         :resource => IS_DARK_MODE ? Rez.Drawables.speedDarkIcon : Rez.Drawables.speedIcon,
         :x => WIDTH_SCREEN - 32,
@@ -453,11 +494,11 @@ class CBREdgeDashView extends WatchUi.DataField {
           :x => WIDTH_SCREEN - 32,
           :y => 210,
         },
-        {
-          :resource => IS_DARK_MODE ? Rez.Drawables.rulerMeasureDarkIcon : Rez.Drawables.rulerMeasureIcon,
-          :x => WIDTH_SCREEN - 32,
-          :y => 151,
-        },
+        // {
+        //   :resource => IS_DARK_MODE ? Rez.Drawables.rulerMeasureDarkIcon : Rez.Drawables.rulerMeasureIcon,
+        //   :x => WIDTH_SCREEN - 32,
+        //   :y => 151,
+        // },
         {
           :resource => IS_DARK_MODE ? Rez.Drawables.speedDarkIcon : Rez.Drawables.speedIcon,
           :x => WIDTH_SCREEN - 32,

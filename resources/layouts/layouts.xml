@@ -44,15 +44,15 @@
         <!-- Frecuencia Cardíaca - Lado derecho debajo de la distancia -->
         <label id="heartRateValue"
             x="58"
-            y="110"
+            y="105"
             justification="Graphics.TEXT_JUSTIFY_CENTER"
             font="Graphics.FONT_NUMBER_MEDIUM"
         />
         <label id="averageHeartRate"
-            x="58"
-            y="158"
+            x="73"
+            y="154"
             justification="Graphics.TEXT_JUSTIFY_CENTER"
-            font="Graphics.FONT_TINY"
+            font="Graphics.FONT_SMALL"
         />
         <label id="zoneHeartRateLetter"
             x="109"
@@ -70,16 +70,16 @@
 
         <!-- Potencia media 3s -->
         <label id="powerValue"
-            x="198"
-            y="110"
+            x="200"
+            y="105"
             justification="Graphics.TEXT_JUSTIFY_CENTER"
             font="Graphics.FONT_NUMBER_MEDIUM"
         />
         <label id="averagePower"
-            x="198"
-            y="158"
+            x="215"
+            y="154"
             justification="Graphics.TEXT_JUSTIFY_CENTER"
-            font="Graphics.FONT_TINY"
+            font="Graphics.FONT_SMALL"
         />
 
         <!-- Distancia -->
@@ -230,6 +230,19 @@
             font="Graphics.FONT_SMALL"
         />
 
+        <!-- ICONOS -->
+        <bitmap id="circleOffIcon1"
+            filename="../drawables/circle-off.svg" />
+        <bitmap id="circleOffIcon2"
+            filename="../drawables/circle-off.svg" />
+        <bitmap id="heartIcon"
+            filename="../drawables/heart.svg" />
+        <bitmap id="boltIcon"
+            filename="../drawables/bolt.svg" />
+        <bitmap id="rulerMeasureIcon"
+            filename="../drawables/ruler-measure.svg" />
+        <bitmap id="rulerMeasureIconDark"
+            filename="../drawables/ruler-measure-dark.svg" />
 
     </layout>
 </layouts>

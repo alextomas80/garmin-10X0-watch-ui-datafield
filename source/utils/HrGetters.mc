@@ -14,7 +14,7 @@ module HrGetters {
     if (info has :currentHeartRate && info.currentHeartRate != null) {
       return info.currentHeartRate.toFloat().format("%d");
     } else {
-      return "--";
+      return "---";
     }
   }
 
@@ -22,7 +22,7 @@ module HrGetters {
     if (info has :averageHeartRate && info.averageHeartRate != null) {
       return info.averageHeartRate.toFloat().format("%d");
     } else {
-      return "--";
+      return "---";
     }
   }
 
@@ -41,7 +41,7 @@ module HrGetters {
     var zones = getHeartRateZones();
 
     // Si no tenemos datos suficientes, retornamos null
-    if (currentHR.equals("--") || zones == null || zones.size() == 0) {
+    if (currentHR.equals("---") || zones == null || zones.size() == 0) {
       return null;
     }
 
@@ -68,8 +68,8 @@ module HrGetters {
     var zones = getHeartRateZones();
     var currentZone = getCurrentHeartRateZone(info);
 
-    if (currentHR.equals("--") || zones == null || currentZone == null) {
-      return "--";
+    if (currentHR.equals("---") || zones == null || currentZone == null) {
+      return "---";
     }
 
     var hrValue = currentHR.toNumber();
