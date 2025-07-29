@@ -6,8 +6,8 @@
 
         <label id="speedValue"
             x="245"
-            y="10"
-            justification="Graphics.TEXT_JUSTIFY_RIGHT"
+            y="50"
+            justification="Graphics.TEXT_JUSTIFY_VCENTER"
             font="Graphics.FONT_NUMBER_THAI_HOT"
         />
 
@@ -20,7 +20,7 @@
         />
 
         <label id="avgSpeedValue"
-            x="42"
+            x="41"
             y="44"
             justification="Graphics.TEXT_JUSTIFY_LEFT"
             font="Graphics.FONT_GLANCE"
@@ -35,7 +35,7 @@
         />
 
         <label id="maxSpeedValue"
-            x="42"
+            x="41"
             y="65"
             justification="Graphics.TEXT_JUSTIFY_LEFT"
             font="Graphics.FONT_GLANCE"
@@ -53,13 +53,6 @@
             y="154"
             justification="Graphics.TEXT_JUSTIFY_CENTER"
             font="Graphics.FONT_SMALL"
-        />
-        <label id="zoneHeartRateLetter"
-            x="109"
-            y="161"
-            text="Z"
-            justification="Graphics.TEXT_JUSTIFY_CENTER"
-            font="Graphics.FONT_XTINY"
         />
         <label id="zoneHeartRate"
             x="118"
@@ -86,9 +79,9 @@
         <label
             id="distanceValue"
             x="245"
-            y="228"
+            y="195"
             font="Graphics.FONT_NUMBER_HOT"
-            justification="Graphics.TEXT_JUSTIFY_VCENTER"
+            justification="Graphics.TEXT_JUSTIFY_RIGHT"
         />
         <label
             id="distanceNextPointValue"
@@ -104,51 +97,26 @@
             font="Graphics.FONT_TINY"
             justification="Graphics.TEXT_JUSTIFY_LEFT"
         />
-        <label
-            id="distanceToDestinationValue"
-            x="39"
-            y="250"
-            font="Graphics.FONT_TINY"
-            justification="Graphics.TEXT_JUSTIFY_RIGHT"
-        />
-        <label
-            id="nameToDestinationValue"
-            x="43"
-            y="233"
-            font="Graphics.FONT_TINY"
-            justification="Graphics.TEXT_JUSTIFY_LEFT"
-        />
+
 
         <!-- Tiempo transcurrido -->
         <label
             id="elapsedHoursTimeValue"
-            x="96"
-            y="309"
-            font="Graphics.FONT_SYSTEM_NUMBER_MILD"
-            justification="Graphics.TEXT_JUSTIFY_VCENTER"
+            x="98"
+            y="286"
+            font="Graphics.FONT_NUMBER_MILD"
+            justification="Graphics.TEXT_JUSTIFY_RIGHT"
         />
         <label
             id="elapsedTimeValue"
             x="245"
-            y="315"
+            y="280"
             font="Graphics.FONT_NUMBER_HOT"
-            justification="Graphics.TEXT_JUSTIFY_VCENTER"
+            justification="Graphics.TEXT_JUSTIFY_RIGHT"
         />
+
 
         <!-- Altitud -->
-        <label id="altitudeValue"
-            x="center"
-            y="378"
-            justification="Graphics.TEXT_JUSTIFY_CENTER"
-            font="Graphics.FONT_NUMBER_MEDIUM"
-        />
-        <label id="altitudeUnits"
-            x="center"
-            y="368"
-            justification="Graphics.TEXT_JUSTIFY_CENTER"
-            font="Graphics.FONT_XTINY"
-        />
-
         <label id="totalAscentValue"
             x="40"
             y="374"
@@ -164,35 +132,12 @@
         />
 
         <label id="percentageGradeValue"
-            x="230"
-            y="380"
+            x="245"
+            y="365"
+            font="Graphics.FONT_NUMBER_HOT"
             justification="Graphics.TEXT_JUSTIFY_RIGHT"
-            font="Graphics.FONT_NUMBER_MEDIUM"
         />
-        <label id="percentageGradePoint"
-            x="234"
-            y="400"
-            justification="Graphics.TEXT_JUSTIFY_CENTER"
-            font="Graphics.FONT_GLANCE"
-        />
-        <label id="percentageGradeDecimalValue"
-            x="238"
-            y="400"
-            justification="Graphics.TEXT_JUSTIFY_LEFT"
-            font="Graphics.FONT_GLANCE"
-        />
-        <label id="percentageGradeSign"
-            x="270"
-            y="375"
-            justification="Graphics.TEXT_JUSTIFY_RIGHT"
-            font="Graphics.FONT_GLANCE"
-        />
-        <label id="percentageGradeUnits"
-            x="254"
-            y="398"
-            justification="Graphics.TEXT_JUSTIFY_LEFT"
-            font="Graphics.FONT_GLANCE"
-        />
+
 
         <!-- Footer -->
         <label id="currentTime"
@@ -209,12 +154,6 @@
             font="Graphics.FONT_TINY"
         />
 
-        <label id="temperature"
-            x="270"
-            y="449"
-            justification="Graphics.TEXT_JUSTIFY_RIGHT"
-            font="Graphics.FONT_TINY"
-        />
 
         <!-- Custom User Text -->
         <label id="customUserTopText"
@@ -225,7 +164,7 @@
         />  
         <label id="customUserBottomText"
             x="center"
-            y="449"
+            y="448"
             justification="Graphics.TEXT_JUSTIFY_CENTER"
             font="Graphics.FONT_SMALL"
         />
@@ -240,9 +179,31 @@
         <bitmap id="boltIcon"
             filename="../drawables/bolt.svg" />
         <bitmap id="rulerMeasureIcon"
+            visible="false"
             filename="../drawables/ruler-measure.svg" />
         <bitmap id="rulerMeasureIconDark"
+            visible="false"
             filename="../drawables/ruler-measure-dark.svg" />
+        <bitmap id="clockIcon"
+            filename="../drawables/clock.svg" />
+        <bitmap id="clockIconDark"
+            filename="../drawables/clock-dark.svg" />
+        <bitmap id="speedIcon"
+            filename="../drawables/speed.svg" />
+        <bitmap id="speedIconDark"
+            filename="../drawables/speed-dark.svg" />
+        <bitmap id="percentageIcon"
+            filename="../drawables/percentage.svg" />
+        <bitmap id="percentageIconDark"
+            filename="../drawables/percentage-dark.svg" />
+        <bitmap id="arrowUpRightIcon"
+            filename="../drawables/arrow-up-right.svg" />
+        <bitmap id="arrowDownRightIcon"
+            filename="../drawables/arrow-down-right.svg" />
+        <bitmap id="arrowDownRightIconDark"
+            filename="../drawables/arrow-down-right-dark.svg" />
+        <bitmap id="arrowUpRightIconDark"
+            filename="../drawables/arrow-up-right-dark.svg" />
 
     </layout>
 </layouts>

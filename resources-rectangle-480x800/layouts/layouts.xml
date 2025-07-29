@@ -5,46 +5,46 @@
         <drawable class="Background" />
 
         <label id="speedValue"
-            x="209"
-            y="34"
+            x="440"
+            y="88"
             justification="Graphics.TEXT_JUSTIFY_VCENTER"
             font="Graphics.FONT_NUMBER_THAI_HOT"
         />
 
         <!-- Velocidad Media - Lado izquierdo -->
         <label id="avgSpeedUnits"
-            x="10"
-            y="33"
+            x="15"
+            y="87"
             justification="Graphics.TEXT_JUSTIFY_LEFT"
-            font="Graphics.FONT_TINY"
+            font="Graphics.FONT_GLANCE"
         />
 
         <label id="avgSpeedValue"
-            x="37"
-            y="28"
+            x="88"
+            y="87"
             justification="Graphics.TEXT_JUSTIFY_LEFT"
             font="Graphics.FONT_GLANCE"
         />
 
         <!-- Velocidad Máxima - Lado izquierdo debajo de la media -->
         <label id="maxSpeedUnits"
-            x="10"
-            y="50"
+            x="15"
+            y="123"
             justification="Graphics.TEXT_JUSTIFY_LEFT"
-            font="Graphics.FONT_TINY"
+            font="Graphics.FONT_GLANCE"
         />
 
         <label id="maxSpeedValue"
-            x="37"
-            y="45"
+            x="88"
+            y="123"
             justification="Graphics.TEXT_JUSTIFY_LEFT"
             font="Graphics.FONT_GLANCE"
         />
 
         <!-- Frecuencia Cardíaca - Lado derecho debajo de la distancia -->
         <label id="heartRateValue"
-            x="52"
-            y="77"
+            x="120"
+            y="240"
             justification="Graphics.TEXT_JUSTIFY_CENTER"
             font="Graphics.FONT_NUMBER_MEDIUM"
         />
@@ -140,15 +140,15 @@
 
         <!-- Footer -->
         <label id="currentTime"
-            x="10"
-            y="308"
+            x="15"
+            y="765"
             justification="Graphics.TEXT_JUSTIFY_LEFT"
             font="Graphics.FONT_TINY"
         />
 
         <label id="battery"
-            x="236"
-            y="308"
+            x="465"
+            y="765"
             justification="Graphics.TEXT_JUSTIFY_RIGHT"
             font="Graphics.FONT_TINY"
         />
@@ -163,7 +163,7 @@
         />  
         <label id="customUserBottomText"
             x="center"
-            y="307"
+            y="762"
             justification="Graphics.TEXT_JUSTIFY_CENTER"
             font="Graphics.FONT_SMALL"
         />
