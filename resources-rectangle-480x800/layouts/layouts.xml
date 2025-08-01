@@ -42,7 +42,7 @@
         />
 
         <!-- Frecuencia Cardíaca - Lado derecho debajo de la distancia -->
-        <label id="heartRateValue"
+        <label id="hrValue"
             x="120"
             y="240"
             justification="Graphics.TEXT_JUSTIFY_CENTER"

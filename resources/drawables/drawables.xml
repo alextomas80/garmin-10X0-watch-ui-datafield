@@ -1,48 +1,57 @@
 <drawables xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
-    <bitmap id="LauncherIcon" filename="launcher_icon.svg" dithering="none" />
+    <bitmap id="LauncherIcon" filename="launcher_icon.svg" />
     <bitmap
-        id="DestinationIcon" filename="destination_icon.svg" dithering="none" />
+        id="DestinationIcon" filename="destination_icon.svg" />
     <bitmap
-        id="DestinationIconDark" filename="destination_icon_dark.svg" dithering="none" />
+        id="DestinationIconDark" filename="destination_icon_dark.svg" />
     <bitmap
-        id="heartIcon" filename="heart.svg" dithering="none" />
+        id="heartIcon" filename="heart.svg" />
+    <bitmap id="heartUpIcon" filename="heart-up.svg" />
     <bitmap
-        id="heartUpIcon" filename="heart-up.svg" dithering="none" />
+        id="boltIcon" filename="bolt.svg" />
     <bitmap
-        id="boltIcon" filename="bolt.svg" dithering="none" />
+        id="clockIcon" filename="clock.svg" />
     <bitmap
-        id="caretUp" filename="caret-up.svg" dithering="none" />
+        id="clockDarkIcon" filename="clock-dark.svg" />
     <bitmap
-        id="caretDown" filename="caret-down.svg" dithering="none" />
+        id="rulerMeasureIcon" filename="ruler-measure.svg" />
     <bitmap
-        id="clockIcon" filename="clock.svg" dithering="none" />
+        id="rulerMeasureDarkIcon" filename="ruler-measure-dark.svg" />
     <bitmap
-        id="clockDarkIcon" filename="clock-dark.svg" dithering="none" />
+        id="speedIcon" filename="speed.svg" />
     <bitmap
-        id="rulerMeasureIcon" filename="ruler-measure.svg" dithering="none" />
+        id="speedDarkIcon" filename="speed-dark.svg" />
     <bitmap
-        id="rulerMeasureDarkIcon" filename="ruler-measure-dark.svg" dithering="none" />
+        id="arrowUpIcon" filename="square-arrow-up.svg" />
     <bitmap
-        id="speedIcon" filename="speed.svg" dithering="none" />
+        id="arrowUpDarkIcon" filename="square-arrow-up-dark.svg" />
     <bitmap
-        id="speedDarkIcon" filename="speed-dark.svg" dithering="none" />
+        id="arrowDownIcon" filename="square-arrow-down.svg" />
     <bitmap
-        id="arrowUpIcon" filename="square-arrow-up.svg" dithering="none" />
+        id="arrowDownDarkIcon" filename="square-arrow-down-dark.svg" />
     <bitmap
-        id="arrowUpDarkIcon" filename="square-arrow-up-dark.svg" dithering="none" />
+        id="mapIcon" filename="map-route.svg" />
     <bitmap
-        id="arrowDownIcon" filename="square-arrow-down.svg" dithering="none" />
+        id="mapDarkIcon" filename="map-route-dark.svg" />
     <bitmap
-        id="arrowDownDarkIcon" filename="square-arrow-down-dark.svg" dithering="none" />
+        id="arrowBigRightLinesIcon" filename="arrow-big-right-lines.svg" />
     <bitmap
-        id="mapIcon" filename="map-route.svg" dithering="none" />
+        id="arrowBigRightLinesDarkIcon" filename="arrow-big-right-lines-dark.svg" />
     <bitmap
-        id="mapDarkIcon" filename="map-route-dark.svg" dithering="none" />
+        id="percentageIcon" filename="percentage.svg" />
     <bitmap
-        id="arrowBigRightLinesIcon" filename="arrow-big-right-lines.svg" dithering="none" />
+        id="percentageIconDark" filename="percentage-dark.svg" />
     <bitmap
-        id="arrowBigRightLinesDarkIcon" filename="arrow-big-right-lines-dark.svg" dithering="none" />
-
+        id="avgSpeedIcon" filename="circle-off.svg" />
+    <bitmap
+        id="avgSpeedIconDark" filename="circle-off-dark.svg" />
+    <bitmap id="caretUp"
+        filename="caret-up.svg" />
+    <bitmap id="caretUpDark" filename="caret-up-dark.svg" />
+    <bitmap
+        id="caretDown" filename="caret-down.svg" />
+    <bitmap
+        id="caretDownDark" filename="caret-down-dark.svg" />
 
 </drawables>

@@ -39,7 +39,7 @@ class HrField {
 
   hidden static function initializeUICache(view as CBREdgeDashView) as Void {
     if (_hrValue == null) {
-      _hrValue = view.findDrawableById("heartRateValue") as WatchUi.Text;
+      _hrValue = view.findDrawableById("hrValue") as WatchUi.Text;
     }
     if (_avgHRValue == null) {
       _avgHRValue = view.findDrawableById("averageHeartRate") as WatchUi.Text;

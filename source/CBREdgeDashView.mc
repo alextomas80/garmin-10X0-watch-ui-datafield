@@ -12,12 +12,26 @@ using TimeGetters.Getters as TimeUtils;
 using HrGetters;
 
 class CBREdgeDashView extends WatchUi.DataField {
-  hidden var CENTER_SCREEN_PX = 141;
-  hidden var HEIGHT_SCREEN = 0;
-  hidden var WIDTH_SCREEN = 0;
+  hidden const CENTER = Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER;
 
-  static var is8X0 as Boolean = false;
+  // Valores de la pantalla
+  hidden var currentSpeed as Float = 0.0;
+  hidden var avgSpeed as Float = 0.0;
+  hidden var currentHr as String = "";
+  hidden var currentPower as String = "";
+  hidden var currentDistance as String = "";
+  hidden var currentElapsedTime as String = "";
+  hidden var currentPercentage as Float = 0.0;
+  hidden var _currentPercentage;
+  hidden var totalAscent as Float = 0.0;
+  hidden var totalDescent as Float = 0.0;
 
+  // Helpers
+  hidden var IS_8X0_DEVICE as Boolean = false;
+  hidden var isDarkMode as Boolean = false;
+  hidden var unitsSystem as Number = System.getDeviceSettings().paceUnits;
+
+  // Colores
   var UNITS_COLOR;
   var VALUE_COLOR;
 
@@ -29,50 +43,103 @@ class CBREdgeDashView extends WatchUi.DataField {
   }
 
   function onLayout(dc as Dc) as Void {
+    var settingsDevice = System.getDeviceSettings();
+
     setLayout(Rez.Layouts.MainLayout(dc));
 
-    CENTER_SCREEN_PX = dc.getWidth() / 2;
-    HEIGHT_SCREEN = dc.getHeight();
-    WIDTH_SCREEN = dc.getWidth();
+    IS_8X0_DEVICE = Utils.ValidationUtils.is8X0(dc);
+    unitsSystem = settingsDevice.paceUnits;
 
-    is8X0 = Utils.ValidationUtils.is8X0(dc);
+    _currentPercentage = View.findDrawableById("percentageGradeValue") as WatchUi.Text;
   }
 
-  function compute(info as Activity.Info) as Void {}
+  function compute(info as Activity.Info) as Void {
+    // Current speed
+    var speed = SpeedGetters.getCurrentSpeed(info);
+    if (unitsSystem == System.UNIT_STATUTE) {
+      currentSpeed = speed * 2.237;
+    } else {
+      currentSpeed = speed * 3.6;
+    }
+
+    // Avg Speed
+    var avg = SpeedGetters.getAvg(info);
+    if (unitsSystem == System.UNIT_STATUTE) {
+      avgSpeed = avg * 2.237;
+    } else {
+      avgSpeed = avg * 3.6;
+    }
+
+    // HR
+    currentHr = HrGetters.getCurrentHeartRate(info);
+
+    // Power Watts
+    currentPower = SensorGetters.getThreeSecondAveragePower(info);
+
+    // Distance
+    currentDistance = DistanceGetters.Getters.getElapsedDistance(info);
+
+    // Elapsed Time
+    currentElapsedTime = TimeGetters.Getters.getElapsedTimeFormatted(info);
+
+    // Percentage
+    currentPercentage = AltitudeGetters.getCurrentGradePercentage(info);
+
+    // Ascent and Descent
+    totalAscent = AltitudeGetters.getTotalAscent(info);
+    totalDescent = AltitudeGetters.getTotalDescent(info);
+  }
 
   function onUpdate(dc as Dc) as Void {
-    var isDarkMode = Utils.ValidationUtils.isDarkMode(self);
+    var backgroundColor = getBackgroundColor();
+    isDarkMode = backgroundColor == Graphics.COLOR_BLACK;
+
+    // - INICIO --- Actualizar colores del fondo
+    var background = View.findDrawableById("Background") as Background;
+    background.setDarkMode(isDarkMode);
+
+    var currentHrZone = HrGetters.getCurrentHeartRateZone(Activity.getActivityInfo());
+    var currentHrZoneColor = HrGetters.getHeartRateZoneColor(currentHrZone);
+    background.setHrColor(currentHrZoneColor);
+    // - FIN --- Actualizar colores del fondo
 
     UNITS_COLOR = isDarkMode ? Graphics.COLOR_WHITE : Graphics.COLOR_DK_GRAY;
     VALUE_COLOR = isDarkMode ? Graphics.COLOR_WHITE : Graphics.COLOR_BLACK;
 
-    var currentHrZone = HrGetters.getCurrentHeartRateZone(Activity.getActivityInfo());
-    var currentHrZoneColor = HrGetters.getHeartRateZoneColor(currentHrZone);
-
-    var background = View.findDrawableById("Background") as Background;
-    background.setDarkMode(isDarkMode);
-    background.setHrColor(currentHrZoneColor);
+    drawAvgSpeed();
+    drawHr();
+    drawPower();
+    drawDistance();
+    drawElapsedTime();
+    drawPercentage();
+    drawAscentAndDescent();
+    drawFooter();
 
     View.onUpdate(dc);
 
+    drawCurrentSpeed(dc);
     drawLines(dc);
+    drawAppIcons(dc);
+  }
 
-    SpeedField.draw(self, VALUE_COLOR, isDarkMode);
-    // drawHR();
-    HrField.draw(self, dc);
-    drawPower();
-    ElapsedTimeField.draw(self, dc);
-    DistanceField.draw(self, dc);
-    PercentageField.draw(self, dc);
-    TotalAscentField.draw(self, dc);
-    TotalDescentField.draw(self, dc);
-    // drawInfoRoute();
+  function onTimerStop() as Void {
+    // Clear the screen when the activity stops
+    System.println("Stop!");
+    // _currentPercentage.setText("10.0");
+    // WatchUi.requestUpdate();
+  }
 
-    drawFooter();
+  function onTimerPause() as Void {
+    // Clear the screen when the activity stops
+    System.println("Stop!!!");
+    // _currentPercentage.setText("10.0");
+    // WatchUi.requestUpdate();
   }
 
   function drawLines(dc as Dc) as Void {
-    var isDarkMode = Utils.ValidationUtils.isDarkMode(self);
+    var CENTER_SCREEN_PX = dc.getWidth() / 2;
+    var HEIGHT_SCREEN = dc.getHeight();
+    var WIDTH_SCREEN = dc.getWidth();
 
     var lines = [
       {
@@ -101,12 +168,12 @@ class CBREdgeDashView extends WatchUi.DataField {
       },
       {
         // Vertical line
-        :x1 => CENTER_SCREEN_PX + 8,
+        :x1 => CENTER_SCREEN_PX,
         :y1 => HEIGHT_SCREEN * FIRST_ROW_HEIGHT,
-        :x2 => CENTER_SCREEN_PX - 8,
+        :x2 => CENTER_SCREEN_PX,
         :y2 => HEIGHT_SCREEN * (FIRST_ROW_HEIGHT + BASIC_ROW_HEIGHT),
         :color => isDarkMode ? Graphics.COLOR_BLACK : Graphics.COLOR_WHITE,
-        :width => 4,
+        :width => 2,
       },
     ];
 
@@ -115,84 +182,6 @@ class CBREdgeDashView extends WatchUi.DataField {
       dc.setColor(line[:color], Graphics.COLOR_TRANSPARENT);
       dc.setPenWidth(line[:width]);
       dc.drawLine(line[:x1], line[:y1], line[:x2], line[:y2]);
-    }
-  }
-
-  // function drawHR() as Void {
-  //   var info = Activity.getActivityInfo();
-
-  //   // Current
-  //   var currentHR = HrGetters.getCurrentHeartRate(info);
-
-  //   var hrDisplay = View.findDrawableById("heartRateValue") as Text;
-  //   hrDisplay.setText(currentHR);
-  //   hrDisplay.setColor(Graphics.COLOR_WHITE);
-
-  //   // Icon
-  //   var posHrX = hrDisplay.locX,
-  //     posHrY = hrDisplay.locY,
-  //     widthHr = hrDisplay.width;
-
-  //   var hrIcon = View.findDrawableById("heartIcon") as WatchUi.Bitmap;
-  //   hrIcon.setLocation(posHrX + widthHr - 5, posHrY + 5);
-
-  //   var iconAvg2 = View.findDrawableById("circleOffIcon2") as WatchUi.Bitmap;
-  //   iconAvg2.setVisible(!is8X0);
-
-  //   if (!is8X0) {
-  //     // Avg
-  //     var avgHR = HrGetters.getAverageHeartRate(info);
-
-  //     var avgHrDisplay = View.findDrawableById("averageHeartRate") as Text;
-  //     avgHrDisplay.setText(avgHR);
-  //     avgHrDisplay.setColor(Graphics.COLOR_WHITE);
-
-  //     // IconAvg
-  //     var positionXAvg = avgHrDisplay.locX,
-  //       positionYAvg = avgHrDisplay.locY,
-  //       widthHrAvg = avgHrDisplay.width,
-  //       heightHrAvg = avgHrDisplay.height;
-
-  //     iconAvg2.setLocation(positionXAvg - widthHrAvg - 30, positionYAvg - heightHrAvg / 2 + 5);
-  //   }
-  // }
-
-  function drawPower() as Void {
-    var info = Activity.getActivityInfo();
-
-    // Current
-    var currentPowerValue = SensorGetters.getThreeSecondAveragePower(info);
-
-    var powerDisplay = View.findDrawableById("powerValue") as Text;
-    powerDisplay.setText(currentPowerValue);
-    powerDisplay.setColor(Graphics.COLOR_WHITE);
-
-    // Icon
-    var positionX = powerDisplay.locX,
-      positionY = powerDisplay.locY,
-      widthHr = powerDisplay.width;
-
-    var icon = View.findDrawableById("boltIcon") as WatchUi.Bitmap;
-    icon.setLocation(positionX + widthHr - 5, positionY + 5);
-
-    var iconAvg = View.findDrawableById("circleOffIcon2") as WatchUi.Bitmap;
-    iconAvg.setVisible(!is8X0);
-
-    if (!is8X0) {
-      // Avg
-      var averagePowerValue = SensorGetters.getAveragePower(info);
-
-      var avgPowerDisplay = View.findDrawableById("averagePower") as Text;
-      avgPowerDisplay.setText(averagePowerValue);
-      avgPowerDisplay.setColor(Graphics.COLOR_WHITE);
-
-      // IconAvg
-      var positionXAvg = avgPowerDisplay.locX,
-        positionYAvg = avgPowerDisplay.locY,
-        widthHrAvg = avgPowerDisplay.width,
-        heightHrAvg = avgPowerDisplay.height;
-
-      iconAvg.setLocation(positionXAvg - widthHrAvg - 30, positionYAvg - heightHrAvg / 2 + 5);
     }
   }
 
@@ -263,5 +252,141 @@ class CBREdgeDashView extends WatchUi.DataField {
       customTopTextLabel.setText(customTopText);
       customTopTextLabel.setColor(VALUE_COLOR);
     }
+  }
+
+  function drawCurrentSpeed(dc as Dc) as Void {
+    var _currentSpeedId = View.findDrawableById("speedValue") as WatchUi.Text;
+    _currentSpeedId.setText(currentSpeed.format("%0.1f"));
+    _currentSpeedId.setColor(VALUE_COLOR);
+
+    var _currentSpeedLabelId = View.findDrawableById("speed_label") as WatchUi.Text;
+    _currentSpeedLabelId.setText(unitsSystem == System.UNIT_STATUTE ? " mph" : " km/h");
+    _currentSpeedLabelId.setColor(UNITS_COLOR);
+
+    var icon;
+    if (currentSpeed > avgSpeed) {
+      icon = isDarkMode ? WatchUi.loadResource(Rez.Drawables.caretUpDark) : WatchUi.loadResource(Rez.Drawables.caretUp);
+    } else {
+      icon = isDarkMode
+        ? WatchUi.loadResource(Rez.Drawables.caretDownDark)
+        : WatchUi.loadResource(Rez.Drawables.caretDown);
+    }
+    if (avgSpeed > 0) {
+      var positionX = IS_8X0_DEVICE ? 213 : 249;
+      var positionY = IS_8X0_DEVICE ? 4 : 21;
+      dc.drawBitmap(positionX, positionY, icon);
+    }
+  }
+
+  function drawAvgSpeed() as Void {
+    var _avgSpeedId = View.findDrawableById("avgSpeedValue") as WatchUi.Text;
+    _avgSpeedId.setText(avgSpeed.format("%0.2f") + (unitsSystem == System.UNIT_STATUTE ? " mph" : " km/h"));
+    _avgSpeedId.setColor(VALUE_COLOR);
+
+    var _avgSpeedLabelId = View.findDrawableById("avgSpeedLabel") as WatchUi.Text;
+    _avgSpeedLabelId.setText("AVG");
+    _avgSpeedLabelId.setColor(UNITS_COLOR);
+  }
+
+  function drawHr() as Void {
+    var _hrId = View.findDrawableById("hrValue") as WatchUi.Text;
+    _hrId.setText(currentHr);
+    _hrId.setColor(Graphics.COLOR_WHITE);
+  }
+
+  function drawPower() as Void {
+    var _powerId = View.findDrawableById("powerValue") as WatchUi.Text;
+    _powerId.setText(currentPower);
+    _powerId.setColor(Graphics.COLOR_WHITE);
+  }
+
+  function drawDistance() as Void {
+    var _distanceId = View.findDrawableById("distanceValue") as WatchUi.Text;
+    _distanceId.setText(currentDistance);
+    _distanceId.setColor(VALUE_COLOR);
+
+    var _distanceLabelId = View.findDrawableById("distance_label") as WatchUi.Text;
+    _distanceLabelId.setColor(VALUE_COLOR);
+  }
+
+  function drawElapsedTime() as Void {
+    var _elapsedTimeId = View.findDrawableById("elapsedTimeValue") as WatchUi.Text;
+    _elapsedTimeId.setText(currentElapsedTime);
+    _elapsedTimeId.setColor(VALUE_COLOR);
+  }
+
+  function drawPercentage() as Void {
+    var percentageFormatted = Utils.NumberFormatter.formatFloat(currentPercentage, 1);
+    if (_currentPercentage != null) {
+      _currentPercentage.setText(percentageFormatted);
+      _currentPercentage.setColor(VALUE_COLOR);
+    }
+  }
+
+  function drawAscentAndDescent() as Void {
+    var ascentId = View.findDrawableById("totalAscentValue") as WatchUi.Text;
+    ascentId.setText(Utils.NumberFormatter.formatFloat(totalAscent, 0) + " m");
+    ascentId.setColor(VALUE_COLOR);
+
+    var descentId = View.findDrawableById("totalDescentValue") as WatchUi.Text;
+    descentId.setText(Utils.NumberFormatter.formatFloat(totalDescent, 0) + " m");
+    descentId.setColor(VALUE_COLOR);
+  }
+
+  function drawAppIcons(dc as Dc) as Void {
+    var WIDTH_SCREEN = dc.getWidth();
+
+    var baseIcons = [
+      {
+        :resource => Rez.Drawables.heartIcon,
+        :x => IS_8X0_DEVICE ? 95 : 108,
+        :y => IS_8X0_DEVICE ? 88 : 140,
+      },
+      {
+        :resource => Rez.Drawables.boltIcon,
+        :x => IS_8X0_DEVICE ? WIDTH_SCREEN - 32 : 250,
+        :y => IS_8X0_DEVICE ? 87 : 139,
+      },
+      {
+        :resource => isDarkMode ? Rez.Drawables.clockDarkIcon : Rez.Drawables.clockIcon,
+        :x => WIDTH_SCREEN - 34,
+        :y => IS_8X0_DEVICE ? 209 : 311,
+      },
+      {
+        :resource => isDarkMode ? Rez.Drawables.rulerMeasureDarkIcon : Rez.Drawables.rulerMeasureIcon,
+        :x => WIDTH_SCREEN - 34,
+        :y => IS_8X0_DEVICE ? 151 : 226,
+      },
+      {
+        :resource => isDarkMode ? Rez.Drawables.percentageIconDark : Rez.Drawables.percentageIcon,
+        :x => WIDTH_SCREEN - 34,
+        :y => IS_8X0_DEVICE ? 269 : 397,
+      },
+      {
+        :resource => isDarkMode ? Rez.Drawables.speedDarkIcon : Rez.Drawables.speedIcon,
+        :x => WIDTH_SCREEN - 33,
+        :y => IS_8X0_DEVICE ? 32 : 40,
+      },
+      {
+        :resource => isDarkMode ? Rez.Drawables.arrowUpDarkIcon : Rez.Drawables.arrowUpIcon,
+        :x => 15,
+        :y => IS_8X0_DEVICE ? 249 : 372,
+      },
+      {
+        :resource => isDarkMode ? Rez.Drawables.arrowDownDarkIcon : Rez.Drawables.arrowDownIcon,
+        :x => 15,
+        :y => IS_8X0_DEVICE ? 273 : 400,
+      },
+    ];
+
+    for (var i = 0; i < baseIcons.size(); i++) {
+      var icon = baseIcons[i];
+      drawIcon(dc, icon[:resource], icon[:x], icon[:y]);
+    }
+  }
+
+  function drawIcon(dc as Dc, iconId as ResourceId, x as Number, y as Number) as Void {
+    var icon = WatchUi.loadResource(iconId) as BitmapResource;
+    dc.drawBitmap(x, y, icon);
   }
 }

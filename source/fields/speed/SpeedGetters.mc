@@ -7,6 +7,14 @@ const DEFAULT_SPEED = "0.0";
 const DEFAULT_AVG_SPEED = "0.00";
 
 module SpeedGetters {
+  function getCurrentSpeed(info as Activity.Info) as Float {
+    if (info has :currentSpeed && info.currentSpeed != null) {
+      return info.currentSpeed;
+    } else {
+      return 0.0;
+    }
+  }
+
   function getCurrentSpeedKmH(info as Activity.Info) as String {
     if (info has :currentSpeed && info.currentSpeed != null) {
       var speedKmH = info.currentSpeed * MS_TO_KMH_FACTOR;
@@ -18,26 +26,11 @@ module SpeedGetters {
     }
   }
 
-  function getAvg(info as Activity.Info) as String {
+  function getAvg(info as Activity.Info) as Float {
     if (info has :averageSpeed && info.averageSpeed != null) {
-      var avgKmH = info.averageSpeed * MS_TO_KMH_FACTOR;
-
-      // Formatear con 2 decimales
-      var intPart = avgKmH.toNumber();
-      var decimalPart = ((avgKmH - intPart) * 100).toNumber();
-
-      // Asegurar que el decimal esté en rango 0-99
-      decimalPart = decimalPart % 100;
-
-      // Formatear el decimal con ceros a la izquierda si es necesario
-      var decimalStr = decimalPart.toString();
-      if (decimalPart < 10) {
-        decimalStr = "0" + decimalStr;
-      }
-
-      return intPart.toString() + "." + decimalStr;
+      return info.averageSpeed;
     } else {
-      return DEFAULT_AVG_SPEED;
+      return 0.0;
     }
   }
 

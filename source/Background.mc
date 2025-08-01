@@ -49,11 +49,17 @@ class Background extends WatchUi.Drawable {
     var medio = deviceWidth / 2;
     var altoPrimeraFila = deviceHeight * FIRST_ROW_HEIGHT;
 
+    // var puntos = [
+    //   [0, inicio],
+    //   [medio + 8, altoPrimeraFila],
+    //   [medio - 8, inicio + deviceHeight * BASIC_ROW_HEIGHT - 1],
+    //   [0, inicio + deviceHeight * BASIC_ROW_HEIGHT - 1],
+    // ];
     var puntos = [
       [0, inicio],
-      [medio + 8, altoPrimeraFila],
-      [medio - 8, inicio + deviceHeight * BASIC_ROW_HEIGHT],
-      [0, inicio + deviceHeight * BASIC_ROW_HEIGHT],
+      [medio, altoPrimeraFila],
+      [medio, inicio + deviceHeight * BASIC_ROW_HEIGHT - 1],
+      [0, inicio + deviceHeight * BASIC_ROW_HEIGHT - 1],
     ];
     dc.fillPolygon(puntos);
   }

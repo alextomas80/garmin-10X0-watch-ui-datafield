@@ -10,20 +10,27 @@
             justification="Graphics.TEXT_JUSTIFY_VCENTER"
             font="Graphics.FONT_NUMBER_THAI_HOT"
         />
+        <label
+            id="speed_label"
+            x="259"
+            y="65"
+            text="km/h"
+            font="Graphics.FONT_XTINY"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+        />
 
         <!-- Velocidad Media - Lado izquierdo -->
-        <label id="avgSpeedUnits"
+        <label id="avgSpeedLabel"
             x="10"
-            y="50"
+            y="76"
             justification="Graphics.TEXT_JUSTIFY_LEFT"
             font="Graphics.FONT_TINY"
         />
-
         <label id="avgSpeedValue"
-            x="41"
-            y="44"
+            x="40"
+            y="76"
             justification="Graphics.TEXT_JUSTIFY_LEFT"
-            font="Graphics.FONT_GLANCE"
+            font="Graphics.FONT_TINY"
         />
 
         <!-- Velocidad Máxima - Lado izquierdo debajo de la media -->
@@ -31,7 +38,7 @@
             x="10"
             y="71"
             justification="Graphics.TEXT_JUSTIFY_LEFT"
-            font="Graphics.FONT_TINY"
+            font="Graphics.FONT_GLANCE"
         />
 
         <label id="maxSpeedValue"
@@ -42,31 +49,36 @@
         />
 
         <!-- Frecuencia Cardíaca - Lado derecho debajo de la distancia -->
-        <label id="heartRateValue"
-            x="58"
-            y="105"
+        <label id="hrLabel"
+            x="119"
+            y="121"
+            text="PPM"
             justification="Graphics.TEXT_JUSTIFY_CENTER"
-            font="Graphics.FONT_NUMBER_MEDIUM"
+            font="Graphics.FONT_XTINY"
+            color="Graphics.COLOR_WHITE"
         />
-        <label id="averageHeartRate"
-            x="73"
-            y="154"
+        <label id="hrValue"
+            x="57"
+            y="110"
             justification="Graphics.TEXT_JUSTIFY_CENTER"
-            font="Graphics.FONT_SMALL"
-        />
-        <label id="zoneHeartRate"
-            x="118"
-            y="158"
-            justification="Graphics.TEXT_JUSTIFY_CENTER"
-            font="Graphics.FONT_TINY"
+            font="Graphics.FONT_NUMBER_HOT"
         />
 
+
         <!-- Potencia media 3s -->
-        <label id="powerValue"
-            x="200"
-            y="105"
+        <label id="powerLabel"
+            x="262"
+            y="121"
+            text="W/3s"
             justification="Graphics.TEXT_JUSTIFY_CENTER"
-            font="Graphics.FONT_NUMBER_MEDIUM"
+            font="Graphics.FONT_XTINY"
+            color="Graphics.COLOR_WHITE"
+        />
+        <label id="powerValue"
+            x="201"
+            y="110"
+            justification="Graphics.TEXT_JUSTIFY_CENTER"
+            font="Graphics.FONT_NUMBER_HOT"
         />
         <label id="averagePower"
             x="215"
@@ -81,6 +93,14 @@
             x="245"
             y="195"
             font="Graphics.FONT_NUMBER_HOT"
+            justification="Graphics.TEXT_JUSTIFY_RIGHT"
+        />
+        <label
+            id="distance_label"
+            x="268"
+            y="214"
+            text="kms"
+            font="Graphics.FONT_XTINY"
             justification="Graphics.TEXT_JUSTIFY_RIGHT"
         />
         <label
@@ -118,22 +138,22 @@
 
         <!-- Altitud -->
         <label id="totalAscentValue"
-            x="40"
-            y="374"
+            x="45"
+            y="373"
             justification="Graphics.TEXT_JUSTIFY_LEFT"
             font="Graphics.FONT_GLANCE"
         />
 
         <label id="totalDescentValue"
-            x="40"
-            y="400"
+            x="45"
+            y="401"
             justification="Graphics.TEXT_JUSTIFY_LEFT"
             font="Graphics.FONT_GLANCE"
         />
 
         <label id="percentageGradeValue"
             x="245"
-            y="365"
+            y="366"
             font="Graphics.FONT_NUMBER_HOT"
             justification="Graphics.TEXT_JUSTIFY_RIGHT"
         />
@@ -169,41 +189,6 @@
             font="Graphics.FONT_SMALL"
         />
 
-        <!-- ICONOS -->
-        <bitmap id="circleOffIcon1"
-            filename="../drawables/circle-off.svg" />
-        <bitmap id="circleOffIcon2"
-            filename="../drawables/circle-off.svg" />
-        <bitmap id="heartIcon"
-            filename="../drawables/heart.svg" />
-        <bitmap id="boltIcon"
-            filename="../drawables/bolt.svg" />
-        <bitmap id="rulerMeasureIcon"
-            visible="false"
-            filename="../drawables/ruler-measure.svg" />
-        <bitmap id="rulerMeasureIconDark"
-            visible="false"
-            filename="../drawables/ruler-measure-dark.svg" />
-        <bitmap id="clockIcon"
-            filename="../drawables/clock.svg" />
-        <bitmap id="clockIconDark"
-            filename="../drawables/clock-dark.svg" />
-        <bitmap id="speedIcon"
-            filename="../drawables/speed.svg" />
-        <bitmap id="speedIconDark"
-            filename="../drawables/speed-dark.svg" />
-        <bitmap id="percentageIcon"
-            filename="../drawables/percentage.svg" />
-        <bitmap id="percentageIconDark"
-            filename="../drawables/percentage-dark.svg" />
-        <bitmap id="arrowUpRightIcon"
-            filename="../drawables/arrow-up-right.svg" />
-        <bitmap id="arrowDownRightIcon"
-            filename="../drawables/arrow-down-right.svg" />
-        <bitmap id="arrowDownRightIconDark"
-            filename="../drawables/arrow-down-right-dark.svg" />
-        <bitmap id="arrowUpRightIconDark"
-            filename="../drawables/arrow-up-right-dark.svg" />
 
     </layout>
 </layouts>

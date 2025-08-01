@@ -4,7 +4,6 @@ import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.WatchUi;
 import Toybox.System;
-import Toybox.WatchUi.DataField;
 
 module Utils {
   class NumberFormatter {

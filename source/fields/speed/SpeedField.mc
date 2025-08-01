@@ -36,9 +36,9 @@ class SpeedField extends WatchUi.View {
 
     updateValue(_speedValue, view, speedValue, valueColor);
 
-    updateValue(_avgSpeedValue, view, avgSpeedValue, valueColor);
-    _avgSpeedLabel.setText("AVG");
-    _avgSpeedLabel.setColor(UNITS_COLOR);
+    // updateValue(_avgSpeedValue, view, avgSpeedValue, valueColor);
+    // _avgSpeedLabel.setText("AVG");
+    // _avgSpeedLabel.setColor(UNITS_COLOR);
 
     updateValue(_maxSpeedValue, view, maxSpeedValue, valueColor);
     _maxSpeedLabel.setText("MÁX");

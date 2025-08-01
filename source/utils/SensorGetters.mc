@@ -8,45 +8,12 @@ import Toybox.Time;
 import Toybox.Time.Gregorian;
 import Toybox.Math;
 using Toybox.UserProfile;
+using Toybox.AntPlus;
 
 module SensorsGetters {
   module Getters {
     function getBattery() as Number {
       return System.getSystemStats().battery.toNumber();
-    }
-
-    function getMaxDistance(info as Activity.Info) as Float {
-      // Try all available distance sources and use the largest value
-      var distanceInMeters = 0.0f;
-      var maxDistance = 0.0f;
-
-      // Check elapsedDistance
-      if (info has :elapsedDistance && info.elapsedDistance != null) {
-        distanceInMeters = info.elapsedDistance;
-        if (distanceInMeters > maxDistance) {
-          maxDistance = distanceInMeters;
-        }
-      }
-
-      // Check totalDistance
-      if (info has :totalDistance && info.totalDistance != null) {
-        distanceInMeters = info.totalDistance;
-        if (distanceInMeters > maxDistance) {
-          maxDistance = distanceInMeters;
-        }
-      }
-
-      // Check distance
-      if (info has :distance && info.distance != null) {
-        distanceInMeters = info.distance;
-        if (distanceInMeters > maxDistance) {
-          maxDistance = distanceInMeters;
-        }
-      }
-
-      // Convert from meters to kilometers
-      var distanceKm = maxDistance / 1000.0f;
-      return distanceKm;
     }
 
     function getCurrentPower(info as Activity.Info) as Float {
@@ -103,14 +70,6 @@ module SensorsGetters {
       };
     }
 
-    function getDistance(info as Activity.Info) as Float {
-      if (info has :distance && info.distance != null) {
-        return info.distance.toFloat() / 1000.0f; // Convert from cm to km
-      } else {
-        return 0.0f; // Default fallback value
-      }
-    }
-
     function getThreeSecondAveragePower(info as Activity.Info) as String {
       // Calcula la potencia promedio de los últimos 3 segundos
       // Usando una implementación simplificada basada en potencia actual y histórica
@@ -145,6 +104,15 @@ module SensorsGetters {
       } else {
         return "---";
       }
+    }
+
+    function getCalculatedPower() as String {
+      var listener = new MyBikePowerListener();
+      var bikePower = new AntPlus.BikePower(listener);
+
+      var calculatedPower = bikePower.getCalculatedPower();
+      System.println("Calculated Power: " + calculatedPower);
+      return calculatedPower.toString();
     }
   }
 }
