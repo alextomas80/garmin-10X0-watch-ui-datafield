@@ -13,6 +13,7 @@ using HrGetters;
 
 class CBREdgeDashView extends WatchUi.DataField {
   hidden const CENTER = Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER;
+  hidden var isStopped as Boolean = false;
 
   // Valores de la pantalla
   hidden var currentSpeed as Float = 0.0;
@@ -122,18 +123,19 @@ class CBREdgeDashView extends WatchUi.DataField {
     drawAppIcons(dc);
   }
 
+  function onTimerStart() as Void {
+    System.println("Start!");
+    isStopped = false;
+  }
+
   function onTimerStop() as Void {
-    // Clear the screen when the activity stops
     System.println("Stop!");
-    // _currentPercentage.setText("10.0");
-    // WatchUi.requestUpdate();
+    isStopped = true;
   }
 
   function onTimerPause() as Void {
-    // Clear the screen when the activity stops
     System.println("Stop!!!");
-    // _currentPercentage.setText("10.0");
-    // WatchUi.requestUpdate();
+    isStopped = true;
   }
 
   function drawLines(dc as Dc) as Void {
@@ -173,7 +175,7 @@ class CBREdgeDashView extends WatchUi.DataField {
         :x2 => CENTER_SCREEN_PX,
         :y2 => HEIGHT_SCREEN * (FIRST_ROW_HEIGHT + BASIC_ROW_HEIGHT),
         :color => isDarkMode ? Graphics.COLOR_BLACK : Graphics.COLOR_WHITE,
-        :width => 2,
+        :width => 4,
       },
     ];
 
@@ -316,11 +318,14 @@ class CBREdgeDashView extends WatchUi.DataField {
   }
 
   function drawPercentage() as Void {
-    var percentageFormatted = Utils.NumberFormatter.formatFloat(currentPercentage, 1);
-    if (_currentPercentage != null) {
-      _currentPercentage.setText(percentageFormatted);
+    if (isStopped) {
+      _currentPercentage.setText("0.0");
       _currentPercentage.setColor(VALUE_COLOR);
+      return;
     }
+    var percentageFormatted = Utils.NumberFormatter.formatFloat(currentPercentage, 1);
+    _currentPercentage.setText(percentageFormatted);
+    _currentPercentage.setColor(VALUE_COLOR);
   }
 
   function drawAscentAndDescent() as Void {
